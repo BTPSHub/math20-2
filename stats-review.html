@@ -40,11 +40,43 @@ body {
   font-size: 9pt; color: #6B7280; text-transform: uppercase;
   letter-spacing: 2.5px; font-family: Helvetica, sans-serif; margin-bottom: 4px;
 }
-.doc-header h1 { font-size: 19pt; font-weight: bold; color: #1a1a2e; margin-bottom: 4px; }
-.student-info { display: flex; gap: 24px; justify-content: center; margin-top: 12px; font-size: 10pt; }
-.student-info .field { display: flex; align-items: center; gap: 6px; }
-.student-info label { color: #6B7280; white-space: nowrap; }
-.student-info .line { border-bottom: 1.5px solid #374151; min-width: 150px; height: 18px; display: inline-block; }
+.doc-header h1 { font-size: 24pt; font-weight: bold; color: #1a1a2e; margin-bottom: 4px; }
+
+/* ── INTRO BOX ─────────────────────────────────────────────────── */
+.intro-box {
+  background: #F0F9FF; border: 1.5px solid #BAE6FD;
+  border-radius: 8px; padding: 13px 18px; margin-bottom: 18px; font-size: 10pt;
+}
+.intro-box p { margin-bottom: 5px; }
+.intro-box p:last-child { margin-bottom: 0; }
+
+/* ── TABLE OF CONTENTS ─────────────────────────────────────────── */
+.toc-box {
+  border: 1.5px solid #D1D5DB; border-radius: 8px;
+  padding: 14px 18px; margin-bottom: 22px; background: #F9FAFB; font-size: 10pt;
+}
+.toc-box h3 {
+  font-size: 9.5pt; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px;
+  color: #374151; font-family: Helvetica, sans-serif; margin-bottom: 11px;
+}
+.toc-box ol { padding-left: 20px; }
+.toc-box li { margin-bottom: 6px; line-height: 1.5; }
+.toc-box a { color: #1D4ED8; text-decoration: none; font-weight: bold; }
+.toc-box a:hover { text-decoration: underline; }
+.toc-box .toc-qs { color: #374151; font-weight: normal; margin-left: 4px; }
+.toc-box .toc-qs a { color: #047857; font-weight: normal; }
+
+/* ── BACK TO TOP ───────────────────────────────────────────────── */
+.back-to-top {
+  text-align: right; padding: 4px 0 10px 0; font-size: 9pt;
+  font-family: Helvetica, sans-serif;
+}
+.back-to-top a {
+  color: #6B7280; text-decoration: none;
+  border: 1px solid #D1D5DB; border-radius: 4px;
+  padding: 2px 9px; background: #F9FAFB;
+}
+.back-to-top a:hover { color: #1D4ED8; border-color: #93C5FD; }
 
 /* ── CALCULATOR NOTE ───────────────────────────────────────────── */
 .calc-note {
@@ -232,25 +264,61 @@ td.td-left { text-align: left; font-weight: bold; }
 .ak-exp { font-size: 9.5pt; color: #374151; margin-top: 3px; }
 
 p { margin-bottom: 5px; }
+
+/* ── X-BAR SYMBOL ──────────────────────────────────────────────── */
+/* Renders the overline directly above the x — cleaner than combining Unicode */
+.xbar { display: inline-block; text-decoration: overline; }
 </style>
 </head>
 <body>
 
 <!-- ════════════ DOCUMENT HEADER ════════════ -->
-<div class="doc-header">
+<div id="top" class="doc-header">
   <div class="course-label">Alberta Mathematics — Math 20-2</div>
   <h1>Statistics Unit Review</h1>
-  <div class="student-info">
-    <div class="field"><label>Name:</label><span class="line"></span></div>
-    <div class="field"><label>Date:</label><span class="line" style="min-width:110px;"></span></div>
-  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro-box">
+  <p>This review is organized <strong>topic by topic</strong>. Each section begins with a summary of key ideas, followed by worked examples with step-by-step explanations, and then practice questions for you to try on your own. A graphing calculator (TI-83 or TI-84) may be used throughout, and z-score table methods are shown alongside calculator methods where applicable.</p>
+  <p>Use the links below to navigate directly to any topic, its practice questions, or the answer key.</p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc-box">
+  <h3>Topics in This Review</h3>
+  <ol>
+    <li>
+      <a href="#topic1">Measures of Central Tendency &amp; Standard Deviation</a>
+      <span class="toc-qs">&mdash; <a href="#topic1-practice">Questions 1&ndash;6</a></span>
+    </li>
+    <li>
+      <a href="#topic2">Normal Distribution, Z-Scores &amp; Calculator Functions</a>
+      <span class="toc-qs">&mdash; <a href="#topic2-practice">Questions 7&ndash;13</a></span>
+    </li>
+    <li>
+      <a href="#topic3">Solving Problems with the Normal Distribution</a>
+      <span class="toc-qs">&mdash; <a href="#topic3-practice">Questions 14&ndash;22</a></span>
+    </li>
+    <li>
+      <a href="#topic4a">Confidence Intervals</a>
+      <span class="toc-qs">&mdash; <a href="#topic4a-practice">Questions 23&ndash;29</a></span>
+    </li>
+    <li>
+      <a href="#topic4b">Margin of Error &amp; Sample Size</a>
+      <span class="toc-qs">&mdash; <a href="#topic4b-practice">Questions 30&ndash;35</a></span>
+    </li>
+    <li>
+      <a href="#answer-key">Answer Key &mdash; All Topics</a>
+    </li>
+  </ol>
 </div>
 
 <!-- CALCULATOR NOTE -->
 <div class="calc-note">
   <h3>&#128197; Calculator &amp; Z-Score Table Note</h3>
   <ul>
-    <li><strong>STAT &rarr; CALC &rarr; 1-Var Stats:</strong> finds mean (<code>x&#773;</code>), median (<code>Med</code>), and standard deviation (<code>&sigma;x</code>) for a data list or frequency table.</li>
+    <li><strong>STAT &rarr; CALC &rarr; 1-Var Stats:</strong> finds mean (<code><span class="xbar">x</span></code>), median (<code>Med</code>), and standard deviation (<code>&sigma;x</code>) for a data list or frequency table.</li>
     <li><strong><code>normalcdf(lower, upper, mean, standard deviation)</code></strong> &mdash; finds the probability/area between two data values for a given distribution.</li>
     <li><strong><code>normalcdf(lower z, upper z, 0, 1)</code></strong> &mdash; finds the area between two z-scores on the standard normal distribution.</li>
     <li><strong><code>invNorm(area, &mu;, &sigma;)</code></strong> &mdash; finds the data value with a given area to its left. Use when you know the probability and need the cutoff value.</li>
@@ -262,7 +330,7 @@ p { margin-bottom: 5px; }
 
 
 <!-- ════════════ TOPIC 1 ════════════ -->
-<div class="topic-header t1-hdr">
+<div id="topic1" class="topic-header t1-hdr">
   <span class="topic-badge">Topic 1</span>
   <div>
     <div class="topic-title">Measures of Central Tendency &amp; Standard Deviation</div>
@@ -275,7 +343,7 @@ p { margin-bottom: 5px; }
     <div>
       <p class="kc-subhead">Measures of Central Tendency</p>
       <ul>
-        <li><strong>Mean (&mu; or x&#773;):</strong> sum &divide; count. Read <code>x&#773;</code> from calculator.</li>
+        <li><strong>Mean (&mu; or <span class="xbar">x</span>):</strong> sum &divide; count. Read <code><span class="xbar">x</span></code> from calculator.</li>
         <li><strong>Median:</strong> middle value when sorted; average two middle values if even count.</li>
         <li><strong>Mode:</strong> most frequent value(s). May be none, one, or multiple.</li>
       </ul>
@@ -350,14 +418,16 @@ p { margin-bottom: 5px; }
     </div>
     <div class="step"><span class="s-label">Step 1:</span> Press <code>STAT</code> &rarr; 1:Edit. Enter scores (1, 2, 3, 4, 5) in L<sub>1</sub>; frequencies (4, 8, 12, 9, 7) in L<sub>2</sub>.</div>
     <div class="step"><span class="s-label">Step 2:</span> Press <code>STAT</code> &rarr; CALC &rarr; 1-Var Stats. Type <code>L<sub>1</sub>, L<sub>2</sub></code> then <code>ENTER</code> twice.</div>
-    <div class="step"><span class="s-label">Step 3:</span> Verify n = 40 (total students). Read: <code>x&#773; &asymp; 3.175 &rarr; 3.2</code> &nbsp;and&nbsp; <code>&sigma;x &asymp; 1.2</code></div>
+    <div class="step"><span class="s-label">Step 3:</span> Verify n = 40 (total students). Read: <code><span class="xbar">x</span> &asymp; 3.175 &rarr; 3.2</code> &nbsp;and&nbsp; <code>&sigma;x &asymp; 1.2</code></div>
     <div class="step indent" style="font-size:9.5pt; color:#6B7280;">Manual check: [1(4)+2(8)+3(12)+4(9)+5(7)] &divide; 40 = 127 &divide; 40 = 3.175 &#10003;</div>
     <div class="answer-box">Mean &asymp; 3.2 / 5 &nbsp;|&nbsp; Standard Deviation &asymp; 1.2</div>
     <p class="note-text">Average score of 3.2 out of 5 with moderate spread — most scores fall within about 1.2 points of the mean in either direction.</p>
   </div>
 </div>
 
-<div class="practice-heading ph-t1">&#9998; Practice Questions &mdash; Topic 1</div>
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+
+<div id="topic1-practice" class="practice-heading ph-t1">&#9998; Practice Questions &mdash; Topic 1</div>
 
 <div class="question">
   <div class="q-head"><span class="q-type type-mc">Multiple Choice</span> 1.</div>
@@ -429,7 +499,8 @@ p { margin-bottom: 5px; }
 
 
 <!-- ════════════ TOPIC 2 ════════════ -->
-<div class="topic-header t2-hdr">
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+<div id="topic2" class="topic-header t2-hdr">
   <span class="topic-badge">Topic 2</span>
   <div>
     <div class="topic-title">Normal Distribution, Z-Scores &amp; Calculator Functions</div>
@@ -674,7 +745,9 @@ p { margin-bottom: 5px; }
   </div>
 </div>
 
-<div class="practice-heading ph-t2">&#9998; Practice Questions &mdash; Topic 2</div>
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+
+<div id="topic2-practice" class="practice-heading ph-t2">&#9998; Practice Questions &mdash; Topic 2</div>
 
 <div class="question">
   <div class="q-head"><span class="q-type type-mc">Multiple Choice</span> 7.</div>
@@ -749,7 +822,8 @@ p { margin-bottom: 5px; }
 
 
 <!-- ════════════ TOPIC 3 ════════════ -->
-<div class="topic-header t3-hdr">
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+<div id="topic3" class="topic-header t3-hdr">
   <span class="topic-badge">Topic 3</span>
   <div>
     <div class="topic-title">Solving Problems with the Normal Distribution</div>
@@ -864,7 +938,9 @@ p { margin-bottom: 5px; }
   </div>
 </div>
 
-<div class="practice-heading ph-t3">&#9998; Practice Questions &mdash; Topic 3</div>
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+
+<div id="topic3-practice" class="practice-heading ph-t3">&#9998; Practice Questions &mdash; Topic 3</div>
 
 <div class="question">
   <div class="q-head"><span class="q-type type-mc">Multiple Choice</span> 14.</div>
@@ -959,7 +1035,8 @@ p { margin-bottom: 5px; }
 
 
 <!-- ════════════ TOPIC 4a ════════════ -->
-<div class="topic-header t4a-hdr">
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+<div id="topic4a" class="topic-header t4a-hdr">
   <span class="topic-badge">Topic 4a</span>
   <div>
     <div class="topic-title">Confidence Intervals</div>
@@ -1069,7 +1146,9 @@ p { margin-bottom: 5px; }
   </div>
 </div>
 
-<div class="practice-heading ph-t4a">&#9998; Practice Questions &mdash; Topic 4a</div>
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+
+<div id="topic4a-practice" class="practice-heading ph-t4a">&#9998; Practice Questions &mdash; Topic 4a</div>
 
 <div class="question">
   <div class="q-head"><span class="q-type type-mc">Multiple Choice</span> 23.</div>
@@ -1147,7 +1226,8 @@ p { margin-bottom: 5px; }
 
 
 <!-- ════════════ TOPIC 4b ════════════ -->
-<div class="topic-header t4b-hdr">
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+<div id="topic4b" class="topic-header t4b-hdr">
   <span class="topic-badge">Topic 4b</span>
   <div>
     <div class="topic-title">Margin of Error &amp; Sample Size</div>
@@ -1240,7 +1320,9 @@ p { margin-bottom: 5px; }
   </div>
 </div>
 
-<div class="practice-heading ph-t4b">&#9998; Practice Questions &mdash; Topic 4b</div>
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+
+<div id="topic4b-practice" class="practice-heading ph-t4b">&#9998; Practice Questions &mdash; Topic 4b</div>
 
 <div class="question">
   <div class="q-head"><span class="q-type type-mc">Multiple Choice</span> 30.</div>
@@ -1329,7 +1411,8 @@ p { margin-bottom: 5px; }
 
 
 <!-- ════════════ ANSWER KEY ════════════ -->
-<div class="answer-key">
+<div class="back-to-top"><a href="#top">&#8593; Back to Top</a></div>
+<div id="answer-key" class="answer-key">
   <div class="ak-title">&#128273; Answer Key — All Topics</div>
 
   <div class="ak-section">
@@ -1388,6 +1471,8 @@ p { margin-bottom: 5px; }
   </div>
 
 </div><!-- end answer-key -->
+
+<div class="back-to-top" style="padding: 14px 0 6px 0;"><a href="#top">&#8593; Back to Top</a></div>
 
 </body>
 </html>
